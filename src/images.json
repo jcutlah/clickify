@@ -1,0 +1,32 @@
+[
+    {
+        "src":"./assets/images/Neuschwanstein.jpg",
+        "name":"Neuschwanstein",
+        "id": 1
+    },
+    {
+        "src":"./assets/images/albrechtsburg.jpg",
+        "name":"Albrechtsburg",
+        "id": 2
+    },
+    {
+        "src":"./assets/images/burgEltz.jpg",
+        "name":"Burg Eltz",
+        "id": 3
+    },
+    {
+        "src":"./assets/images/burgRheinstein.jpg",
+        "name":"Burg Rheinstein",
+        "id": 4
+    },
+    {
+        "src":"./assets/images/Heidelberg.jpg",
+        "name":"Heidelberg",
+        "id": 5
+    },
+    {
+        "src":"./assets/images/Hohenschwangau.jpg",
+        "name":"Hohenschwangau",
+        "id": 6
+    }
+]
