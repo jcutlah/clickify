@@ -35,18 +35,41 @@ class App extends React.Component {
             clickedImages: []
         })
     }
+    winGame = () => {
+        alert('you win!');
+        this.resetGame();
+
+    }
     handleImageClick = id => {
         console.log(`click to image with id ${id}`);
         if (this.hasBeenClicked(id)){
             console.log('duplicate detected');
+            alert('You lose!');
             this.resetGame();
         } else {
             this.setState({
                 clickedImages: [...this.state.clickedImages, id],
                 score: this.state.score + 1,
-                topScore: this.state.score > this.state.topScore ? this.state.score + 1 : this.state.topScore
+                topScore: this.state.score >= this.state.topScore ? this.state.score + 1 : this.state.topScore
             });
+            console.log("score: " + this.state.score);
+            
         }
+    }
+    componentDidUpdate(){
+        console.log('componentDidUpdate()');
+        // console.log(this.state);
+        if (this.state.score === this.state.images.length) {
+            console.log('winningggg');
+            this.winGame();
+        } 
+    }
+    shuffle = a => {
+        for (let i = a.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [a[i], a[j]] = [a[j], a[i]];
+        }
+        return a;
     }
   render() {
       return (
@@ -57,7 +80,7 @@ class App extends React.Component {
             total={this.state.topScore}
             />
             <div className="row justify-content-center">
-                {this.state.images.map(image => 
+                {this.shuffle(this.state.images).map(image => 
                 <Card 
                 src={image.src}
                 key={image.id}
@@ -65,22 +88,6 @@ class App extends React.Component {
                 id={image.id}
                 handleClick={this.handleImageClick}/>
                 )}
-            </div>
-            <div className="App">
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-                <p>
-                Edit <code>src/App.js</code> and save to reload.
-                </p>
-                <a
-                className="App-link"
-                href="https://reactjs.org"
-                target="_blank"
-                rel="noopener noreferrer"
-                >
-                Learn React
-                </a>
-            </header>
             </div>
         </div>
 

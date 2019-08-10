@@ -28,5 +28,35 @@
         "src":"./assets/images/Hohenschwangau.jpg",
         "name":"Hohenschwangau",
         "id": 6
+    },
+    {
+        "src":"./assets/images/hohenzollern.jpg",
+        "name":"Hohenzollern",
+        "id": 7
+    },
+    {
+        "src":"./assets/images/lichtenstein.jpg",
+        "name":"Lichtenstein",
+        "id": 8
+    },
+    {
+        "src":"./assets/images/moyland.jpg",
+        "name":"Moyland",
+        "id": 9
+    },
+    {
+        "src":"./assets/images/reichsburgCochem.jpg",
+        "name":"Reichsburg Cochem",
+        "id": 10
+    },
+    {
+        "src":"./assets/images/stolzenfels.jpg",
+        "name":"Stolzenfels",
+        "id": 11
+    },
+    {
+        "src":"./assets/images/sigmaringen.jpg",
+        "name":"Sigmaringen",
+        "id": 12
     }
 ]
