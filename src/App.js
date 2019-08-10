@@ -1,8 +1,8 @@
 import React from 'react';
-import logo from './logo.svg';
 import Header from './components/Header/Header';
 import Scoreboard from './components/Scoreboard/Scoreboard';
 import Card from './components/Cards/Card';
+import Status from './components/Status';
 import images from './images.json';
 import './App.css';
 
@@ -14,14 +14,15 @@ class App extends React.Component {
         doubleClick: false,
         clickedImages: [],
         score: 0,
-        topScore: 0
+        topScore: 0,
+        status: "playing"
     }
     hasBeenClicked = id => {
         let doubleClick = false;
         this.state.clickedImages.forEach(key => {
-            console.log(key, id);
+            // console.log(key, id);
             if (key === id){
-                console.log('doubleclicked');
+                // console.log('doubleclicked');
                 doubleClick = true;
                 
             }
@@ -32,7 +33,8 @@ class App extends React.Component {
         this.setState({
             doubleClick: false,
             score: 0,
-            clickedImages: []
+            clickedImages: [],
+            status: "playing"
         })
     }
     winGame = () => {
@@ -41,9 +43,12 @@ class App extends React.Component {
 
     }
     handleImageClick = id => {
-        console.log(`click to image with id ${id}`);
+        // console.log(`click to image with id ${id}`);
         if (this.hasBeenClicked(id)){
-            console.log('duplicate detected');
+            // console.log('duplicate detected');
+            this.setState({
+                status: "loser"
+            })
             alert('You lose!');
             this.resetGame();
         } else {
@@ -52,15 +57,15 @@ class App extends React.Component {
                 score: this.state.score + 1,
                 topScore: this.state.score >= this.state.topScore ? this.state.score + 1 : this.state.topScore
             });
-            console.log("score: " + this.state.score);
+            // console.log("score: " + this.state.score);
             
         }
     }
     componentDidUpdate(){
-        console.log('componentDidUpdate()');
+        // console.log('componentDidUpdate()');
         // console.log(this.state);
         if (this.state.score === this.state.images.length) {
-            console.log('winningggg');
+            // console.log('winningggg');
             this.winGame();
         } 
     }
@@ -89,6 +94,7 @@ class App extends React.Component {
                 handleClick={this.handleImageClick}/>
                 )}
             </div>
+            <Status status={this.state.status} />
         </div>
 
       )
